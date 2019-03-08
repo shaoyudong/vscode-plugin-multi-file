@@ -7,7 +7,6 @@ import * as path from 'path';
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
 	vscode.commands.registerCommand('extension.multifile', (e) => {
-		vscode.window.showInformationMessage('change!!!');
 		const folders: any = vscode.workspace.workspaceFolders || [];
 		const activeTextEditor: any = vscode.window.activeTextEditor;
 		const workspacePath: string = folders[0].uri.path;
@@ -17,7 +16,6 @@ export function activate(context: vscode.ExtensionContext) {
 			return;
 		}
 		vscode.workspace.openTextDocument(path.resolve(workspacePath, relativePath.replace(/^source/, 'dist'))).then(document => {
-			console.log('hahaha');
 			vscode.window.showTextDocument(document, vscode.ViewColumn.Beside, true)
 		});
 	})
